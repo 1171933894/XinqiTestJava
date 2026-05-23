@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: xinqi-test-java
+  thymeleaf:
+    cache: false
+    encoding: UTF-8

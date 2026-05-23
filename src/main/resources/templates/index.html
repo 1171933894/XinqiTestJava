@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav>
+    <a href="/" class="active">博客</a>
+    <a href="/tech-stack">技术栈</a>
+</nav>
+
+<h1 class="page-title">最新文章</h1>
+
+<div class="post-list">
+    <div class="post-card" th:each="post : ${posts}">
+        <h2><a th:href="@{'/blog/' + ${post.id}}" th:text="${post.title}">标题</a></h2>
+        <div class="summary" th:text="${post.summary}">摘要</div>
+        <div class="meta">
+            <span th:text="${post.author}">作者</span>
+            <span th:text="${#temporals.format(post.publishedDate, 'yyyy-MM-dd')}">日期</span>
+        </div>
+        <div class="tags">
+            <span class="tag" th:each="tag : ${post.tags}" th:text="${tag}">标签</span>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 个人博客. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术栈</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav>
+    <a href="/">博客</a>
+    <a href="/tech-stack" class="active">技术栈</a>
+</nav>
+
+<h1 class="page-title">我的技术栈</h1>
+
+<div th:each="category : ${categories}" class="tech-category">
+    <h2 th:text="${category.name}">分类名称</h2>
+    <div class="tech-grid">
+        <div class="tech-item" th:each="item : ${category.items}">
+            <h3 th:text="${item.name}">技能名称</h3>
+            <div class="desc" th:text="${item.description}">描述</div>
+            <span class="proficiency"
+                  th:text="${item.proficiency}"
+                  th:classappend="${item.proficiency == '精通' ? 'expert' : (item.proficiency == '熟练' ? 'skilled' : 'beginner')}">
+                熟练度
+            </span>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 个人博客. All rights reserved.
+</footer>
+
+</body>
+</html>

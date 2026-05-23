@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${post.title}">文章标题</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav>
+    <a href="/">博客</a>
+    <a href="/tech-stack">技术栈</a>
+</nav>
+
+<article>
+    <div class="article-header">
+        <h1 th:text="${post.title}">文章标题</h1>
+        <div class="meta">
+            <span th:text="${post.author}">作者</span>
+            <span>·</span>
+            <span th:text="${#temporals.format(post.publishedDate, 'yyyy-MM-dd')}">日期</span>
+        </div>
+        <div class="tags">
+            <span class="tag" th:each="tag : ${post.tags}" th:text="${tag}">标签</span>
+        </div>
+    </div>
+
+    <div class="article-content" th:utext="${post.content}">
+        文章内容
+    </div>
+</article>
+
+<footer>
+    <a href="/">返回首页</a>
+</footer>
+
+</body>
+</html>
